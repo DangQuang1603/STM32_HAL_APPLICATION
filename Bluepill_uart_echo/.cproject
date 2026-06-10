@@ -159,14 +159,6 @@
 		<project id="Bluepill_uart_echo.null.1555441523" name="Bluepill_uart_echo"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.349836390;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.349836390.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1645205915;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1681339921">
-			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.620435797;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.620435797.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.703404745;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1808154448">
-			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="scannerConfiguration"/>
 </cproject>

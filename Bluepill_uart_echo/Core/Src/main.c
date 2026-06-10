@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,7 +44,9 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 uint8_t rxdata;
-static uint8_t check;
+uint8_t id;
+char buffer[100];
+const char newline[2] = "\r\n";
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -56,7 +58,20 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart->Instance == USART1)
 	{
-		HAL_UART_Transmit(&huart1, &rxdata, 1, HAL_MAX_DELAY);
+    if((rxdata == '\r') || (rxdata == '\n'))
+    {
+      HAL_UART_Transmit(&huart1, (uint8_t *)buffer, id, HAL_MAX_DELAY);
+      HAL_UART_Transmit(&huart1, (uint8_t *)newline, 2, HAL_MAX_DELAY);
+      id = 0;
+      memset(buffer, 0, sizeof(buffer));
+    }
+    else
+    {
+      if(id < sizeof(buffer) - 1)
+      {
+        buffer[id++] = rxdata;
+      }
+    }
 
 		HAL_UART_Receive_IT(&huart1, &rxdata, 1);
 	}
@@ -101,7 +116,6 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   char msg[] = "UART echo ready\r\n";
-  HAL_Delay(1000);
   HAL_UART_Transmit(&huart1, (uint8_t *)msg, sizeof(msg), HAL_MAX_DELAY);
   HAL_UART_Receive_IT(&huart1, &rxdata, 1);
   /* USER CODE END 2 */
