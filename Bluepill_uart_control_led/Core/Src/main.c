@@ -88,10 +88,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	{
     if((rxdata == '\r') || (rxdata == '\n'))
     {
+      buffer[id] = '\0';
       check_command(buffer);
       print_msg(buffer);
-      print_msg(newline);
-      print_msg("Enter command: ");
+      // print_msg(newline);
+      print_msg("\r\nEnter command: ");
       id = 0;
       memset(buffer, 0, sizeof(buffer));
     }
@@ -172,20 +173,20 @@ int main(void)
     {
       case 1:
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+        command = 0;
         break;
       case 2:
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
+        command = 0;
         break;
       case 3:
         print_msg("Application closed\r\n");
-        goto end;
+        return 0;
       default:
         break;
     }
     /* USER CODE BEGIN 3 */
   }
-end:
-  return 0;
   /* USER CODE END 3 */
 }
 
